@@ -1,0 +1,41 @@
+<div>
+  <h1>User {{user.name}}</h1>
+  <dl>
+    <dt>Role</dt>
+    <dd>{{user.role}}</dd>
+    <dt>Last login</dt>
+    <dd>{{user.lastLogin | date:'short'}}</dd>
+    <dt>Warnings</dt>
+    <dd>{{user.warnings}}</dd>
+    <dt>Online</dt>
+    <dd>{{user.online ? 'Yes' : 'No'}}</dd>
+    <dt>Status</dt>
+    <dd>{{user.banned ? 'Blocked' : 'Active'}}</dd>
+  </dl>
+
+  <h2>Actions</h2>
+
+  <p *ngIf="user.online">
+    <button type="button" md-raised-button color="primary" (click)="getScreen()">
+      Get screenshot
+    </button>
+    <button type="button" md-raised-button color="primary" (click)="getProcesses()">
+      Get process list
+    </button>
+  </p>
+  <p *ngIf="!user.banned">
+    <button type="button" md-raised-button color="warn" (click)="warn()">
+      Warn
+    </button>
+    <button type="button" md-raised-button color="accent" (click)="ban()">
+      Ban
+    </button>
+  </p>
+
+  <p *ngIf="user.banned">
+    <button type="button" md-raised-button color="warn" (click)="unban()">
+      Unblock
+    </button>
+  </p>
+
+</div>

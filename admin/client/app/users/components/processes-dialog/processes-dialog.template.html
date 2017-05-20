@@ -1,0 +1,48 @@
+<md-dialog-content>
+  <div style="min-width: 800px">
+    <ngx-datatable
+      #processesTbl
+      class='material expandable'
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="50"
+      [detailRowHeight]="100"
+      [scrollbarV]="true"
+      [scrollbarH]="true"
+      [rows]='rows'>
+      <ngx-datatable-row-detail>
+        <template let-row="row" ngx-datatable-row-detail-template>
+          <div style="padding-left:35px;">
+            <div><strong>Windows:</strong></div>
+            <div>{{row.windows.join(', ')}}</div>
+          </div>
+        </template>
+      </ngx-datatable-row-detail>
+      <ngx-datatable-column
+        [width]="50"
+        [resizeable]="false"
+        [sortable]="false"
+        [draggable]="false"
+        [canAutoResize]="false">
+        <template let-row="row" ngx-datatable-cell-template>
+          <button
+            title="Expand/Collapse Row"
+            (click)="toggleExpandRow(row)">
+            {{row.$$expanded ? '-' : '+'}}
+          </button>
+        </template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="#" [width]="30" [canAutoResize]="false">
+        <template let-row="row" ngx-datatable-cell-template>
+          <strong>{{row.$$index + 1}}</strong>
+        </template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Executable" prop="path" [width]="400">
+        <template let-value="value" ngx-datatable-cell-template>
+          <strong>{{value}}</strong>
+        </template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</md-dialog-content>

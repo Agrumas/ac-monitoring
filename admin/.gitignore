@@ -1,0 +1,8 @@
+dist
+.idea
+node_modules
+coverage
+npm-debug.log
+/Procfile
+/ng.iml
+/web.iml

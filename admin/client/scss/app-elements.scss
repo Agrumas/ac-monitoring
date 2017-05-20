@@ -1,0 +1,58 @@
+@import '../../node_modules/@swimlane/ngx-datatable/src/components/datatable';
+
+@mixin app-elements-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .top-menu {
+    height: 50px;
+    padding-top: 7px;
+    margin-bottom: 30px;
+
+    background-color: white;
+    @include nested(12) {
+      .logo {
+        @include span(3 first);
+      }
+      .menu-links {
+        @include span(6);
+      }
+      .user-links {
+        @include span(3 last);
+      }
+    }
+
+    ul.nav li a {
+      text-decoration: none;
+      color: md-color($accent);
+      &:hover, &.active {
+        color: md-color($primary);
+      }
+    }
+  }
+
+  /**
+  General menu
+   */
+  ul.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    li {
+      float: left;
+      > a {
+        display: block;
+        color: md-color($primary);
+        text-align: center;
+        padding: 10px 16px;
+        text-decoration: none;
+      }
+      > button {
+        margin-left: 10px;
+      }
+
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "susy";
+@import "scss/mixins";
+
+$susy: (
+        columns: 12,
+        gutters: .25,
+        container: 1140px,
+        global-box-sizing: border-box,
+  //debug: (
+  //        image: show,
+  //        toggle: top right,
+  //)
+);
+
+@include border-box-sizing;
+
+@import 'scss/material';
+@import "scss/common";
+@import "scss/pages";
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.wrapper {
+  @include container();
+}

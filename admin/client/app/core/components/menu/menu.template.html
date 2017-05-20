@@ -1,0 +1,32 @@
+<div class="top-menu">
+  <div class="logo">
+    <a class="navbar-brand" [routerLink]="['']">AntiCheat Administration panel</a>
+  </div>
+  <div class="menu-links">
+    <ul class="nav navbar-nav">
+      <li>
+        <a [routerLink]="['/']"
+           [routerLinkActive]="['active']"
+           [routerLinkActiveOptions]="{exact: true}">About</a>
+      </li>
+      <li  *ngIf="getLoggedIn() | async">
+        <a [routerLink]="['users']" [routerLinkActive]="['active']">Users List</a>
+      </li>
+    </ul>
+  </div>
+  <div class="user-links">
+    <ul class="nav navbar-nav" *ngIf="getLoggedIn() | async">
+      <li>
+        <button md-raised-button color="primary" [routerLink]="['users/online']">Online users</button>
+      </li>
+      <li>
+        <a href="#" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav" *ngIf="!(getLoggedIn() | async)">
+      <li>
+        <button md-raised-button color="primary" [routerLink]="['login']">Login</button>
+      </li>
+    </ul>
+  </div>
+</div>
